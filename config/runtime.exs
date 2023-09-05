@@ -1,11 +1,12 @@
 import Config
 
 config :ret, RetWeb.Plugs.PostgrestProxy,
-  hostname: System.get_env("POSTGREST_INTERNAL_HOSTNAME", "localhost")
+  hostname: System.get_env("POSTGREST_INTERNAL_HOSTNAME", "db")
 
 case config_env() do
   :dev ->
-    db_hostname = System.get_env("DB_HOST", "localhost")
+    # Configure your database (during building)
+    db_hostname = System.get_env("DB_HOST", "db")
     dialog_hostname = System.get_env("DIALOG_HOSTNAME", "dev-janus.reticulum.io")
     hubs_admin_internal_hostname = System.get_env("HUBS_ADMIN_INTERNAL_HOSTNAME", "hubs.local")
     hubs_client_internal_hostname = System.get_env("HUBS_CLIENT_INTERNAL_HOSTNAME", "hubs.local")
@@ -28,7 +29,8 @@ case config_env() do
         database: "ret_dev",
         hostname: db_hostname,
         password: "postgres",
-        username: "postgres"
+        username: "postgres",
+        port: 5432
       ]
 
     config :ret, Ret.PermsToken, perms_key: perms_key

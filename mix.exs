@@ -5,7 +5,7 @@ defmodule Ret.Mixfile do
     [
       aliases: aliases(),
       app: :ret,
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: [:phoenix] ++ Mix.compilers(),
       deps: deps(),
       elixir: "~> 1.11",
       elixirc_paths: elixirc_paths(Mix.env()),

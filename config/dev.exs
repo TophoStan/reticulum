@@ -2,7 +2,7 @@ import Config
 
 # NOTE: this file contains some security keys/certs that are *not* secrets, and are only used for local development purposes.
 
-host = "hubs.local"
+host = "localhost"
 cors_proxy_host = "hubs-proxy.local"
 assets_host = "hubs-assets.local"
 link_host = "hubs-link.local"
@@ -77,8 +77,10 @@ config :phoenix, :stacktrace_depth, 20
 config :ret, Ret.Repo,
   username: "postgres",
   password: "postgres",
+  hostname: "db",
   database: "ret_dev",
   template: "template0",
+  port: 5432,
   pool_size: 10
 
 config :ret, Ret.SessionLockRepo,
@@ -86,6 +88,7 @@ config :ret, Ret.SessionLockRepo,
   password: "postgres",
   database: "ret_dev",
   template: "template0",
+  port: 5432,
   pool_size: 10
 
 config :ret, RetWeb.Plugs.HeaderAuthorization,
