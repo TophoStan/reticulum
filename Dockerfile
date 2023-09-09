@@ -24,20 +24,6 @@ ARG DEBIAN_FRONTEND=noninteractive
 # Install system dependencies
 RUN apk add git postgresql wget inotify-tools postgresql-client
 
-
-# Add linux packages for Ubuntu
-# RUN echo "deb http://binaries2.erlang-solutions.com/ubuntu/ jammy-esl-erlang-25 contrib" >> /etc/apt/sources.list
-# RUN echo "deb http://binaries2.erlang-solutions.com/ubuntu/ jammy-elixir-1.14 contrib" >> /etc/apt/sources.list
-
-# # Verify integrity of the packages  
-# RUN wget https://binaries2.erlang-solutions.com/GPG-KEY-pmanager.asc \
-#     && apt-key add GPG-KEY-pmanager.asc \
-#     && apt-get install -y erlang elixir 
-
-# # Install phoenix
-# RUN mix local.hex --force && \
-#     mix archive.install --force hex phx_new 1.6.6
-
 # Create app directory
 WORKDIR /app
 
