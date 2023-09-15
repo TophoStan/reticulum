@@ -35,7 +35,6 @@ RUN mix do local.hex --force, local.rebar --force
 
 # Fetch dependencies
 RUN mix deps.get
-
 #Create storage dev
 RUN echo "mkdir storage/dev"
 # Define the command to run your script

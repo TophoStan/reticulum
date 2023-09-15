@@ -1,3 +1,4 @@
+
 version: '1'
 services:
   db:
@@ -17,17 +18,42 @@ services:
       retries: 5
 
   hubs:
-    image: stantop/local-hubs
+    image: stantop/local-hubs:latest
+    environment:
+      - RETICULUM_SERVER=localhost:4000
+      - HOST_IP=localhost
     ports:
       - "8080:8080"
     depends_on:
-      db:
-        condition: service_healthy
+      - app
     networks:
       - localhubs
-    command: "npm run dev"
+    command: "npm run local"
+
     volumes:
       - .:/app/storage/dev
+
+  admin:
+    image: stantop/local-hubs:latest
+    environment:
+      - RETICULUM_SERVER=localhost:4000
+      - HOST_IP=Localhost
+    ports:
+      - "8989:8989"
+    networks:
+      - localhubs
+    command: sh -c "cd admin && npm run local"
+
+  # spoke: 
+  #   image: stantop/local-spoke
+  #   ports:
+  #     - "9090:9090"
+  #   networks:
+  #     - localhubs
+  #   command: "yarn run-local-reticulum"
+  #   volumes:
+  #     - .:/app/storage/dev
+
 
   dialog:
     image: stantop/local-dialog
@@ -51,6 +77,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      
     networks:
       - localhubs
     command: "mix phx.server"
