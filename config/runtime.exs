@@ -8,8 +8,8 @@ case config_env() do
     # Configure your database (during building)
     db_hostname = System.get_env("DB_HOST", "db")
     dialog_hostname = System.get_env("DIALOG_HOSTNAME", "localhost")
-    hubs_admin_internal_hostname = System.get_env("HUBS_ADMIN_INTERNAL_HOSTNAME", "hubs.local")
-    hubs_client_internal_hostname = System.get_env("HUBS_CLIENT_INTERNAL_HOSTNAME", "hubs")
+    hubs_admin_internal_hostname = System.get_env("HUBS_ADMIN_INTERNAL_HOSTNAME", "localhost")
+    hubs_client_internal_hostname = System.get_env("HUBS_CLIENT_INTERNAL_HOSTNAME", "localhost")
     spoke_internal_hostname = System.get_env("SPOKE_INTERNAL_HOSTNAME", "hubs.local")
 
     dialog_port =

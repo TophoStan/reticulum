@@ -3,12 +3,12 @@ import Config
 # NOTE: this file contains some security keys/certs that are *not* secrets, and are only used for local development purposes.
 
 host = "localhost"
-cors_proxy_host = "hubs-proxy.local"
+cors_proxy_host = "localhost"
 assets_host = "hubs-assets.local"
 link_host = "hubs-link.local"
 
 # To run reticulum across a LAN for local testing, uncomment and change the line below to the LAN IP
-# host = cors_proxy_host = "192.168.1.27"
+# host = cors_proxy_host = "172.18.144.1"
 
 # For development, we disable any cache and enable
 # debugging and code reloading.

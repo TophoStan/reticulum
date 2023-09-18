@@ -1,6 +1,6 @@
 defmodule RetWeb.PageController do
   use RetWeb, :controller
-
+  require Logger
   alias Ret.{
     Repo,
     Hub,
@@ -300,6 +300,7 @@ defmodule RetWeb.PageController do
   end
 
   def render_for_path("/admin", _params, conn) do
+    Logger.info("Loading Admin")
     conn |> render_page("admin.html", :admin)
   end
 
