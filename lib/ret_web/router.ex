@@ -94,11 +94,14 @@ defmodule RetWeb.Router do
     get "/", HealthController, :index
   end
 
-  scope "/api/postgrest" do
-    pipe_through [:secure_headers, :auth_required, :admin_required, :proxy_api]
+scope "/api/postgrest" do
+   # pipe_through [:secure_headers, :auth_required, :admin_required, :proxy_api]
+   if(Mix.env() == :prod) do
+   pipe_through([:secure_headers])
+   end
 
-    forward "/", RetWeb.Plugs.PostgrestProxy
-  end
+   forward "/", RetWeb.Plugs.PostgrestProxy
+end
 
   scope "/api/ita" do
     pipe_through [:secure_headers, :auth_required, :admin_required, :proxy_api]

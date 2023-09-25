@@ -2,7 +2,7 @@
 version: '1'
 services:
   db:
-    image: postgres:latest
+    image: postgres:14-alpine
     environment:
       POSTGRES_DB: ret_dev
       POSTGRES_PASSWORD: postgres
@@ -59,6 +59,7 @@ services:
     environment:
       HUBS_ADMIN_INTERNAL_HOSTNAME: admin
       HUBS_CLIENT_INTERNAL_HOSTNAME: hubs
+      POSTGREST_INTERNAL_HOSTNAME: postgrest
     networks:
       - localhubs
     command: "mix phx.server"
@@ -68,12 +69,18 @@ services:
     image: stantop/local-hubs:latest
     environment:
       INTERNAL_HOSTNAME: admin
-      
+      POSTGREST_SERVER: postgrest
     ports:
       - "8989:8989"
     networks:
       - localhubs
     command: sh -c "cd admin && npm run local"
+  postgrest:
+    image: stantop/local-postgrest:latest
+    ports:
+      - "3000:3000"
+    networks:
+      - localhubs
 networks:
   localhubs:
 

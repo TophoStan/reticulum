@@ -3,6 +3,8 @@ defmodule Ret.PermsToken do
   PermsTokens grant granular permissions to users in various contexts.
   They are signed with an RSA algorithm so that external systems can verify tokens with our corresponding public key.
   """
+  import JOSE.JWK
+
   use Guardian,
     otp_app: :ret,
     secret_fetcher: Ret.PermsTokenSecretFetcher,

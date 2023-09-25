@@ -35,6 +35,7 @@ defmodule Ret.Mixfile do
   defp deps do
     [
       {:ecto_boot_migration, "~> 0.2.0"},
+      {:jose, "~> 1.11"},
       {:phoenix, "~> 1.5.13"},
       {:phoenix_pubsub, "~> 2.1"},
       {:phoenix_ecto, "~> 4.0"},

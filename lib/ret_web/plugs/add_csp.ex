@@ -189,6 +189,7 @@ defmodule RetWeb.Plugs.AddCSP do
         "https://www.google-analytics.com",
         "https://www.youtube.com",
         "https://fonts.gstatic.com",
+        "https://localhost:5432",
         assets_url,
         cors_proxy_url,
         custom_rules[:connect_src],
