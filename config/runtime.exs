@@ -10,7 +10,7 @@ case config_env() do
     dialog_hostname = System.get_env("DIALOG_HOSTNAME", "localhost")
     hubs_admin_internal_hostname = System.get_env("HUBS_ADMIN_INTERNAL_HOSTNAME", "localhost")
     hubs_client_internal_hostname = System.get_env("HUBS_CLIENT_INTERNAL_HOSTNAME", "localhost")
-    spoke_internal_hostname = System.get_env("SPOKE_INTERNAL_HOSTNAME", "hubs.local")
+    spoke_internal_hostname = System.get_env("SPOKE_INTERNAL_HOSTNAME", "localhost")
 
     dialog_port =
       "DIALOG_PORT"
