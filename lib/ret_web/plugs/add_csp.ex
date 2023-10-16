@@ -125,6 +125,7 @@ defmodule RetWeb.Plugs.AddCSP do
         custom_rules[:manifest_src]
       ],
       "script-src" => [
+        "*",
         "'self'",
         "blob:",
         "'sha256-/S6PM16MxkmUT7zJN2lkEKFgvXR7yL4Z8PCrRrFu4Q8='",
@@ -146,11 +147,13 @@ defmodule RetWeb.Plugs.AddCSP do
         storage_url
       ],
       "child-src" => [
+        "*",
         "'self'",
         "blob:",
         custom_rules[:child_src]
       ],
       "worker-src" => [
+        "*",
         "'self'",
         "blob:",
         assets_url,
@@ -158,6 +161,7 @@ defmodule RetWeb.Plugs.AddCSP do
         storage_url
       ],
       "font-src" => [
+        "*",
         "'self'",
         "https://cdn.aframe.io",
         "https://cdn.jsdelivr.net",
@@ -169,16 +173,19 @@ defmodule RetWeb.Plugs.AddCSP do
         storage_url
       ],
       "style-src" => [
+        "*",
         "'self'",
         "'unsafe-inline'",
         "https://cdn.jsdelivr.net",
         "https://fonts.googleapis.com",
+        "*",
         assets_url,
         cors_proxy_url,
         custom_rules[:style_src],
         storage_url
       ],
       "connect-src" => [
+        "*",
         "'self'",
         "blob:",
         "data:",
@@ -200,6 +207,7 @@ defmodule RetWeb.Plugs.AddCSP do
         "https://raw.githubusercontent.com"
       ],
       "img-src" => [
+        "*",
         "'self'",
         "blob:",
         "data:",
@@ -215,6 +223,7 @@ defmodule RetWeb.Plugs.AddCSP do
         thumbnail_url
       ],
       "media-src" => [
+        "*",
         "'self'",
         "*.googlevideo.com",
         "blob:",
@@ -227,6 +236,7 @@ defmodule RetWeb.Plugs.AddCSP do
         thumbnail_url
       ],
       "frame-src" => [
+        "*",
         "'self'",
         "https://docs.google.com",
         "https://player.vimeo.com",

@@ -12,11 +12,7 @@ case config_env() do
     hubs_client_internal_hostname = System.get_env("HUBS_CLIENT_INTERNAL_HOSTNAME", "localhost")
     spoke_internal_hostname = System.get_env("SPOKE_INTERNAL_HOSTNAME", "localhost")
 
-    dialog_port =
-      "DIALOG_PORT"
-      |> System.get_env("4443")
-      |> String.to_integer()
-
+    dialog_port = System.get_env("DIALOG_PORT","4443") |> String.to_integer()
 
     perms_key =
       "PERMS_KEY"

@@ -1,9 +1,9 @@
 import Config
 
-# NOTE: this file contains some security keys/certs that are *not* secrets, and are only used for local development purposes.
+# Determine the correct IP address using Kubernetes Service DNS
+host = System.get_env("HUBS_SERVICE_NAME") || "localhost"  # Use the service name if provided
 
-host = "localhost"
-cors_proxy_host = "localhost"
+cors_proxy_host = System.get_env("HUBS_SERVICE_NAME") || "localhost"
 assets_host = "hubs-assets.local"
 link_host = "hubs-link.local"
 
@@ -159,7 +159,7 @@ config :ret, RetWeb.Plugs.AddCSP,
   font_src: asset_hosts,
   style_src: asset_hosts,
   connect_src:
-    "https://#{host}:8080 https://sentry.prod.mozaws.net #{asset_hosts} #{websocket_hosts} https://www.mozilla.org",
+    "https://#{host}:8080 https://sentry.prod.mozaws.net #{asset_hosts} #{websocket_hosts} https://www.mozilla.org https://hubs-service:8080",
   img_src: asset_hosts,
   media_src: asset_hosts,
   manifest_src: asset_hosts
